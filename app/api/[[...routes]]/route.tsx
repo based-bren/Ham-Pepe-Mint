@@ -71,9 +71,10 @@ app.transaction('/publicMint', (c) => {
   return c.contract({
     abi,
     functionName: 'publicMint',
-    args: [inputText],
+    args: [1],
     chainId: `eip155:${baseSepolia.id}`,
     to: '0x18bbB7aF32317ea69CA7850A4602956534EBd10A',
+    value: parseEther(inputText)
   })
 })
 
