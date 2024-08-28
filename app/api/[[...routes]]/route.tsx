@@ -31,10 +31,11 @@ app.frame('/', (c) => {
     image: `https://azure-ready-parakeet-471.mypinata.cloud/ipfs/QmW5n96dcHTrQkEBbsAA2qyRpRfFcsM6GVseZ8wy7v5t9Q`,
     imageAspectRatio: '1:1',
     intents: [
-      <TextInput placeholder="type 1 to 4 public mints" />,
+      <TextInput placeholder=" type 1 up to 4 public mints" />,
       <Button.Transaction target="/freeMint">Free Mint</Button.Transaction>,
-      <Button.Transaction target="/publicMint">Public Mint</Button.Transaction>,
-      <Button.Transaction target="/devMint">Dev Mint</Button.Transaction>,
+      <Button.Transaction target="/publicMint1">Mint 1</Button.Transaction>,
+      <Button.Transaction target="/publicMint2">Mint 2</Button.Transaction>,
+      <Button.Transaction target="/publicMint4">Mint 4</Button.Transaction>,
       //status === 'response' && <Button.Reset>Reset</Button.Reset>,
     ],
   })
@@ -65,7 +66,7 @@ app.transaction('/freeMint', (c) => {
   })
 })
 
-app.transaction('/publicMint', (c) => {
+app.transaction('/publicMint1', (c) => {
   const { inputText } = c
   // Contract transaction response.
   return c.contract({
@@ -74,7 +75,33 @@ app.transaction('/publicMint', (c) => {
     args: [1],
     chainId: `eip155:${baseSepolia.id}`,
     to: '0x18bbB7aF32317ea69CA7850A4602956534EBd10A',
-    value: parseEther(inputText)
+    value: parseEther('0.003')
+  })
+})
+
+app.transaction('/publicMint2', (c) => {
+  const { inputText } = c
+  // Contract transaction response.
+  return c.contract({
+    abi,
+    functionName: 'publicMint',
+    args: [2],
+    chainId: `eip155:${baseSepolia.id}`,
+    to: '0x18bbB7aF32317ea69CA7850A4602956534EBd10A',
+    value: parseEther('0.006')
+  })
+})
+
+app.transaction('/publicMint4', (c) => {
+  const { inputText } = c
+  // Contract transaction response.
+  return c.contract({
+    abi,
+    functionName: 'publicMint',
+    args: [4],
+    chainId: `eip155:${baseSepolia.id}`,
+    to: '0x18bbB7aF32317ea69CA7850A4602956534EBd10A',
+    value: parseEther('0.012')
   })
 })
 
