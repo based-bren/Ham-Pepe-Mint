@@ -5,6 +5,8 @@ import { devtools } from 'frog/dev'
 //import { neynar } from 'frog/hubs'
 import { handle } from 'frog/next'
 import { serveStatic } from 'frog/serve-static'
+import { baseSepolia } from 'viem/chains'
+import { pinata } from 'frog/hubs'
 
 import { abi
 } from './abi.js'
@@ -15,7 +17,8 @@ const app = new Frog({
   basePath: '/api',
   // Supply a Hub to enable frame verification.
   // hub: neynar({ apiKey: 'NEYNAR_FROG_FM' })
-  title: 'Frog Frame',
+  hub: pinata(),
+  title: 'Ham Pepe Test Mints',
 })
 
 // Uncomment to use Edge Runtime
@@ -57,7 +60,7 @@ app.transaction('/freeMint', (c) => {
     abi,
     functionName: 'freeMint',
     args: [1],
-    chainId: 'eip155:84532',
+    chainId: `eip155:${baseSepolia.id}`,
     to: '0x18bbB7aF32317ea69CA7850A4602956534EBd10A',
   })
 })
@@ -69,7 +72,7 @@ app.transaction('/publicMint', (c) => {
     abi,
     functionName: 'publicMint',
     args: [inputText],
-    chainId: 'eip155:84532',
+    chainId: `eip155:${baseSepolia.id}`,
     to: '0x18bbB7aF32317ea69CA7850A4602956534EBd10A',
   })
 })
@@ -79,9 +82,9 @@ app.transaction('/devMint', (c) => {
   // Contract transaction response.
   return c.contract({
     abi,
-    functionName: 'devMint',
+    functionName: 'DevMint',
     args: [inputText],
-    chainId: 'eip155:84532',
+    chainId: `eip155:${baseSepolia.id}`,
     to: '0x18bbB7aF32317ea69CA7850A4602956534EBd10A',
   })
 })
