@@ -4,7 +4,7 @@ import { Button, Frog, TextInput, parseEther } from 'frog'
 import { devtools } from 'frog/dev'
 import { handle } from 'frog/next'
 import { serveStatic } from 'frog/serve-static'
-import { baseSepolia } from 'viem/chains'
+import { base } from 'viem/chains'
 import { pinata } from 'frog/hubs'
 
 import { abi
@@ -82,8 +82,8 @@ app.transaction('/freeMint', (c) => {
     abi,
     functionName: 'freeMint',
     args: [1],
-    chainId: `eip155:${baseSepolia.id}`,
-    to: '0x18bbB7aF32317ea69CA7850A4602956534EBd10A',
+    chainId: `eip155:${base.id}`,
+    to: '0x1f7979C368c82dc647E075FfD61ed149052e3D6B',
   })
 })
 
@@ -93,8 +93,8 @@ app.transaction('/publicMint1', (c) => {
     abi,
     functionName: 'publicMint',
     args: [1],
-    chainId: `eip155:${baseSepolia.id}`,
-    to: '0x18bbB7aF32317ea69CA7850A4602956534EBd10A',
+    chainId: `eip155:${base.id}`,
+    to: '0x1f7979C368c82dc647E075FfD61ed149052e3D6B',
     value: parseEther('0.003')
   })
 })
@@ -105,8 +105,8 @@ app.transaction('/publicMint2', (c) => {
     abi,
     functionName: 'publicMint',
     args: [2],
-    chainId: `eip155:${baseSepolia.id}`,
-    to: '0x18bbB7aF32317ea69CA7850A4602956534EBd10A',
+    chainId: `eip155:${base.id}`,
+    to: '0x1f7979C368c82dc647E075FfD61ed149052e3D6B',
     value: parseEther('0.006')
   })
 })
@@ -117,8 +117,8 @@ app.transaction('/publicMint4', (c) => {
     abi,
     functionName: 'publicMint',
     args: [4],
-    chainId: `eip155:${baseSepolia.id}`,
-    to: '0x18bbB7aF32317ea69CA7850A4602956534EBd10A',
+    chainId: `eip155:${base.id}`,
+    to: '0x1f7979C368c82dc647E075FfD61ed149052e3D6B',
     value: parseEther('0.012')
   })
 })
