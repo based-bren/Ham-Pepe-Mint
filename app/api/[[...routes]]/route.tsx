@@ -15,7 +15,7 @@ const app = new Frog({
   assetsPath: '/',
   basePath: '/api',
   hub: pinata(),
-  title: 'Ham Pepe Test Mints',
+  title: 'Ham Pepe Mint Frame',
 })
 
 
